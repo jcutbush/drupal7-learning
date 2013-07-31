@@ -59,9 +59,18 @@ function annotate_admin_settings() {
 }
 
 /**
+ * Validate annotation settings submission
+ */
+function annotate_admin_settings_validate($form, $form_state) {
+	$limit = $form_state['values']['annotate_limit_per_node'];
+	if (!is_numeric($limit)) {
+		form_set_error('annotate_limit_per_node', t('Please enter number.'));
+	}
+}
+
+/**
  * Process annotation settings submission.
  */
-
 function annotate_admin_settings_submit($form, $form_state) {
 	// Loop through each of the content type checkboxes shown on the form.
 	foreach ($form_state['values']['annotate_node_types'] as $key => $value) {
