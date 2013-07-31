@@ -47,7 +47,7 @@ function annotate_admin_settings_submit($form, $form_state) {
 		// field_info_instance function. If it does then we need to remove the
 		// annotation field as the administrator has unchecked the box.
 		if (!$value) {
-			$instance = $field_info_instance('node', 'annotation', $key);
+			$instance = field_info_instance('node', 'annotation', $key);
 			if (!empty($instance)) {
 				field_delete_instance($instance);
 				watchdog("Annotation", 'Deleted annotation field from content type: %key', array('%key' => $key));
@@ -56,7 +56,7 @@ function annotate_admin_settings_submit($form, $form_state) {
 			// If the checkbox for a content type is checked, look to see whether
 			// the field is associated with that content type. If not then add the
 			// annotation field to the content type.
-			$instance = $field_info_instance('node', 'annotation', $key);
+			$instance = field_info_instance('node', 'annotation', $key);
 			if (empty($instance)) {
 				$instance = array(
 						'field_name' => 'annotation',
