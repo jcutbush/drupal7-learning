@@ -68,7 +68,7 @@ function annotate_admin_settings_submit($form, $form_state) {
 						'display' => array('default' => array('type' => 'text_default'),
 							'teaser' => array('type' => 'text_summary_or_trimmed'))
 				);
-				$instance = $field_create_instance($instance);
+				$instance = field_create_instance($instance);
 				watchdog('Annotation', 'Added annotation field to content type: %key', array('%key' => $key));
 			}
 		}
